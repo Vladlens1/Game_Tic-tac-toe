@@ -9,11 +9,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import android.content.DialogInterface
+import android.content.DialogInterface // DialogInterface - attiecas uz sākuma paziņojuma izvadīšanas
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    // 2 Players variables
+    // 2 Players game mode variables
     private val buttons: Array<Array<Button?>> = Array<Array<Button?>>(3) { arrayOfNulls<Button>(3) }
     private var player1Turn = true
     private var roundCount = 0
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private var playerFirst = ""
     private var playerSecond = ""
 
-    // Comp and Player variables
+    // Comp and Player mode variables
     private var gameType = 0 // 0 for player vs player , 1 for player vs comp
 
 

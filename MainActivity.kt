@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import android.content.DialogInterface
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -43,10 +44,21 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
         val buttonReset: Button = findViewById(R.id.resetBtn)
         buttonReset.setOnClickListener { resetGame() }
+
+        fun showWelcomeDialog() {
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Welcome to Tic Tac Toe game!")
+            builder.setMessage("Let's start playing!")
+            builder.setPositiveButton("OK", DialogInterface.OnClickListener { dialog, which -> })
+            builder.show()
+        }
+
+        showWelcomeDialog()
+
     }
 
     // player vs comp
-
+    // TODO - something
 
 
 
@@ -140,6 +152,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         return field[0][2] == field[1][1] && field[0][2] == field[2][0] && field[0][2] != ""
     }
 
+    // Player1 win
     private fun player1Wins() {
         player1Points++
         AlertDialog.Builder(this@MainActivity)
@@ -152,6 +165,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         resetBoard()
     }
 
+    // PLayer2 win
     private fun player2Wins() {
         player2Points++
         AlertDialog.Builder(this@MainActivity)
@@ -164,6 +178,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         resetBoard()
     }
 
+    // Draw
     private fun draw() {
         AlertDialog.Builder(this)
             .setTitle("Draw !!")
@@ -178,6 +193,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
     /**ok run it*/
 
+    @SuppressLint("SetTextI18n")
     private fun updatePointsText() {
         texviewP1.text = "Player 1: $player1Points"
         texviewP2.text = "Player 2: $player2Points"
